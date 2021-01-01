@@ -13,18 +13,18 @@ We also have all our existing cookbooks (of which there are over 70) and as our 
 
 Earlier in the year we build the [Xorimabot backend suite](https://sous-chefs.org/docs/managing-cookbooks-at-scale/)
 
-We now have cookbooks which are constantly getting updated but moved onto the next problem, releasing these is a manual process which takes time from our variour contributors (Which normally is [Ramereth](https://github.com/Ramereth)).
+We now have cookbooks which are constantly getting updated but moved onto the next problem, releasing these is a manual process which takes time from our various contributors (Which normally is [Ramereth](https://github.com/Ramereth)).
 
-Here we truely believe all members of the community should be able to release cookbooks as long as the normal checks (CI, Review) are passed so we did what any DevOps team would do, we built automation.
+Here we truly believe all members of the community should be able to release cookbooks as long as the normal checks (CI, Review) are passed so we did what any DevOps team would do, we built automation.
 
 ### Architecture
 
-We started to partition the problem into smaller parts, below you can see the architecute we came up with in the end.
+We started to partition the problem into smaller parts, below you can see the architecture we came up with in the end.
 These applications currently run on Kubernetes, the aim is to migrate them to AWS Lambda simply due to the costs of running this solution. If you would like to aid us with covering the costs of sous-chefs donations would be welcome in our [Open Collective](https://opencollective.com/sous-chefs)
 
-![Sous-Chefs auto release architecture](../images/automation-architecture.png)
+![Sous-Chefs auto release architecture](/images/automation-architecture.png)
 
-In this architecture we have applications that cover the various problems we forsaw, these are covered in more detail below.
+In this architecture we have applications that cover the various problems we foresaw, these are covered in more detail below.
 These applications uses github`s webhooks and APIs to run the applications automatically, we also enforce [HMAC secrets](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/securing-your-webhooks) for additional security
 
 ## Label Validator
@@ -73,7 +73,7 @@ The results of this check are published back as a status check against the PR, a
 
 ## Slack Notifier
 
-[Deployment Status Slack Notifier](https://github.com/Xorima/deployment_status_slack_notifier) runs when a [Deployment Status](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-deployment-statuses) is updated to Success of Failure. It then route the message to the [Chef Community Slack](https://community-slack.chef.io/). It gets the release notes from the payload of the deployment and posts them to `#Sous-Chefs` and `#Anouncements`
+[Deployment Status Slack Notifier](https://github.com/Xorima/deployment_status_slack_notifier) runs when a [Deployment Status](https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-deployment-statuses) is updated to Success of Failure. It then route the message to the [Chef Community Slack](https://community-slack.chef.io/). It gets the release notes from the payload of the deployment and posts them to `#Sous-Chefs` and `#Announcements`
 
 ## Future of the Automation and Sous-Chefs
 
